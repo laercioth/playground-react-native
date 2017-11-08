@@ -13,6 +13,7 @@ const Button = ({ onPress, children }) => {
         {children}
       </Text>
     </TouchableOpacity>
+
   );
 };
 
@@ -39,4 +40,4 @@ const styles = StyleSheet.create({
 });
 
 // Make the component available to other parts of the app
-export default Button;
+export { Button };
