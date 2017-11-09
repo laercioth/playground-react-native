@@ -1,5 +1,5 @@
 // Import libraries for making a component
-import React, { Component } from 'react';
+import React from 'react';
 import { TextInput, View, Text, StyleSheet } from 'react-native';
 
 const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
@@ -28,12 +28,13 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     fontSize: 18,
     lineHeight: 23,
-    flex: 3
+    flex: 2
   },
   labelStyle: {
     fontSize: 18,
     paddingLeft: 20,
-    flex: 1
+    flex: 1,
+    color: '#000'
   },
   containerStyle: {
     height: 40,
