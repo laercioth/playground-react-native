@@ -1,9 +1,9 @@
-import Reat from 'react';
+import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducers from '.reducers';
-import { Heard } from './componets/common';
+import reducers from './src/reducers';
+import { Header } from './src/components/common';
 
 export default class App extends Component<{}> {
 
