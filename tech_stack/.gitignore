@@ -1,7 +1,8 @@
 # OSX
 #
 .DS_Store
-
+**/.DS_Store
+*.DS_Store
 # Xcode
 #
 build/
