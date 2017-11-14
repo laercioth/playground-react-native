@@ -27,12 +27,12 @@ class ListItem extends Component {
   }
 
   render(){
-    const { titleStyle } = styles;
+    const { titleStyle, viewStyle } = styles;
     const {id, title } = this.props.library;
 
     return(
-      <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
-        <View>
+      <TouchableWithoutFeedback style={{ flex: 1 }} onPress={() => this.props.selectLibrary(id)}>
+        <View style={viewStyle}>
           <CardSection>
             <Text style={titleStyle}>
               {title}
@@ -48,10 +48,17 @@ class ListItem extends Component {
 // StyleSheet
 const styles = StyleSheet.create({
 	titleStyle: {
+    flex: 1,
     fontSize: 18,
     paddingLeft: 15,
     margin: 10,
     color: 'black'
+  },
+  viewStyle: {
+    flex: 1,
+    borderColor: 'black',
+    borderWidth: 3.5,
+    borderRadius: 10
   }
 });
 
