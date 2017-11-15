@@ -3,7 +3,8 @@ import {
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCES,
-  LOGIN_USER_FAIL
+  LOGIN_USER_FAIL,
+  LOGIN_USER
 } from './types';
 
 export const emailChanged = (text) => {
@@ -21,16 +22,17 @@ export const passwordChanged = (text) => {
 };
 
 export const loginUser = ({ email, password }) => {
-  return (dispatch) =>{
+  return (dispatch) => {
+    dispatch({ type: LOGIN_USER });
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(user => {
-        loginUserSuccess(dispatch, user);
-      }).catch(
+      .then(user => loginUserSuccess(dispatch, user))
+      .catch((error) => {
+        console.log(error);
+
         firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then( user =>
-            loginUserSuccess(dispatch, user);
-          );
-      );
+          .then(user => loginUserSuccess(dispatch, user))
+          .catch(() => loginUserFail(dispatch));
+      });
   };
 };
 
