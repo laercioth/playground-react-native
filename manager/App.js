@@ -1,15 +1,16 @@
 
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import { View } from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
-import reducers from './src/reducers';
 import firebase from 'firebase';
+import reducers from './src/reducers';
 import ReduxThunk from 'redux-thunk';
 import LoginForm from './src/components/LoginForm';
 
 export default class App extends Component<{}> {
 
-  componetWillMount() {
+  componentWillMount() {
     const config = {
       apiKey: 'AIzaSyAXW7DgQGeEc_XB2RWQpeSffpjQEvaeZNI',
       authDomain: 'manager-b50d5.firebaseapp.com',
