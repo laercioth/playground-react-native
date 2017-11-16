@@ -1,11 +1,17 @@
 // Import libraries for making a component
-import React from 'react';
-import { TextInput, View, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { TextInput, View, Text, StyleSheet } from "react-native";
 
-const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
+const Input = ({
+  label,
+  value,
+  onChangeText,
+  placeholder,
+  secureTextEntry
+}) => {
   const { inputStyle, labelStyle, containerStyle } = styles;
 
-  return(
+  return (
     <View style={containerStyle}>
       <Text style={labelStyle}>{label}</Text>
       <TextInput
@@ -23,7 +29,7 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
 // StyleSheet
 const styles = StyleSheet.create({
   inputStyle: {
-    color: '#000',
+    color: "#000",
     paddingRight: 5,
     paddingLeft: 5,
     fontSize: 18,
@@ -34,13 +40,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 20,
     flex: 1,
-    color: '#000'
+    color: "#000"
   },
   containerStyle: {
     height: 40,
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: "row",
+    alignItems: "center"
   }
 });
 
