@@ -36,16 +36,17 @@ class EmployeeCreate extends Component {
             }
           />
         </CardSection>
+        <CardSection>
+        <Text style={styles.pickerStyle}>Shift</Text>
+        </CardSection>
 
-        <CardSection style={{ flexDirection: "column" }}>
-          <Text style={styles.pickerStyle}>Shift</Text>
+        <CardSection>
           <Picker
             style={{ flex: 1 }}
             selectedValue={this.props.shift}
             onValueChange={value =>
               this.props.employeeUpdate({ prop: "shift", value })
-            }
-          >
+            }>
             <Picker.Item label="Monday" value="Monday" />
             <Picker.Item label="Tuesday" value="Tuesday" />
             <Picker.Item label="Wednesday" value="Wednesday" />
@@ -56,7 +57,7 @@ class EmployeeCreate extends Component {
           </Picker>
         </CardSection>
 
-        <CardSection style={{ marginTop: 210 }}>
+        <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>Create</Button>
         </CardSection>
       </Card>
@@ -68,7 +69,9 @@ class EmployeeCreate extends Component {
 const styles = StyleSheet.create({
   pickerStyle: {
     fontSize: 18,
-    paddingLeft: 20
+    paddingLeft: 20,
+    marginBottom: 5,
+    color: 'black'
   }
 });
 
