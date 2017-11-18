@@ -5,7 +5,6 @@ import { employeeUpdate, employeeCreate } from "../actions";
 import { Card, CardSection, Input, Button } from "./common";
 
 class EmployeeCreate extends Component {
-
   onButtonPress() {
     const { name, phone, shift } = this.props;
 
@@ -37,7 +36,7 @@ class EmployeeCreate extends Component {
           />
         </CardSection>
         <CardSection>
-        <Text style={styles.pickerStyle}>Shift</Text>
+          <Text style={styles.pickerStyle}>Shift</Text>
         </CardSection>
 
         <CardSection>
@@ -46,7 +45,8 @@ class EmployeeCreate extends Component {
             selectedValue={this.props.shift}
             onValueChange={value =>
               this.props.employeeUpdate({ prop: "shift", value })
-            }>
+            }
+          >
             <Picker.Item label="Monday" value="Monday" />
             <Picker.Item label="Tuesday" value="Tuesday" />
             <Picker.Item label="Wednesday" value="Wednesday" />
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 20,
     marginBottom: 5,
-    color: 'black'
+    color: "black"
   }
 });
 
@@ -80,4 +80,6 @@ const mapStateToProps = state => {
   return { name, phone, shift };
 };
 
-export default connect(mapStateToProps, { employeeUpdate, employeeCreate })(EmployeeCreate);
+export default connect(mapStateToProps, { employeeUpdate, employeeCreate })(
+  EmployeeCreate
+);
