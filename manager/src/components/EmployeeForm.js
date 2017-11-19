@@ -5,7 +5,13 @@ import { connect } from "react-redux";
 import { employeeUpdate } from "../actions";
 
 class EmployeeForm extends Component {
+
+  componentWillMount() {
+    this.props.shift = {}; 
+  }
+
   render() {
+    console.log(this);
     return (
       <View>
         <CardSection>
@@ -43,6 +49,9 @@ class EmployeeForm extends Component {
             style={{ flex: 1 }}
             selectedValue={
               this.props.shift
+            }
+            value= {
+              this.props.sceneKey === "employeeCreate" ? null : this.props.shift
             }
             onValueChange={value =>
               this.props.employeeUpdate({ prop: "shift", value })
