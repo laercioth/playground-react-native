@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { employeeCreate} from "../actions";
+import { employeeCreate } from "../actions";
 import { Card, CardSection, Button } from "./common";
 import EmployeeForm from "./EmployeeForm";
 
@@ -28,6 +28,6 @@ const mapStateToProps = state => {
   return { name, phone, shift };
 };
 
-export default connect(mapStateToProps, { employeeCreate})(
+export default connect(mapStateToProps, { employeeCreate })(
   EmployeeCreate
 );
