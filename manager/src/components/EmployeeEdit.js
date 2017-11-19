@@ -2,11 +2,12 @@ import _ from "lodash";
 import React, { Component } from "react";
 import EmployeeForm from "./EmployeeForm";
 import { connect } from "react-redux";
-import { Card, CardSection, Button } from "./common";
+import { Card, CardSection, Button, Confirm } from "./common";
 import { employeeUpdate, employeeSave } from "../actions";
-import Communications from 'react-native-communications';
+import Communications from "react-native-communications";
 
 class EmployeeEdit extends Component {
+  state = { showModal: false };
   componentWillMount() {
     _.each(this.props.employee, (value, prop) => {
       this.props.employeeUpdate({ prop, value });
@@ -14,7 +15,12 @@ class EmployeeEdit extends Component {
   }
   onButtonPress() {
     const { name, phone, shift } = this.props;
-    this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid });
+    this.props.employeeSave({
+      name,
+      phone,
+      shift,
+      uid: this.props.employee.uid
+    });
   }
   onTextPress() {
     const { phone, shift } = this.props;
@@ -29,9 +35,22 @@ class EmployeeEdit extends Component {
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>Save Changes</Button>
         </CardSection>
+
         <CardSection>
           <Button onPress={this.onTextPress.bind(this)}>Text Schedule</Button>
         </CardSection>
+
+        <CardSection>
+          <Button
+            onPress={() => this.setState({ showModal: !this.state.showModal })}
+          >
+            Fire Employee
+          </Button>
+        </CardSection>
+
+        <Confirm visible={this.state.showModal}>
+          Are you syre you wnat to delete this?
+        </Confirm>
       </Card>
     );
   }
