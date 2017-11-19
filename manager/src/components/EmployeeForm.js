@@ -12,7 +12,9 @@ class EmployeeForm extends Component {
           <Input
             label="Name"
             placeholder="Jhon"
-            value={this.props.name}
+            value={
+              this.props.sceneKey === "employeeCreate" ? undefined : this.props.name
+            }
             onChangeText={value =>
               this.props.employeeUpdate({ prop: "name", value })
             }
@@ -23,7 +25,9 @@ class EmployeeForm extends Component {
           <Input
             label="Phone"
             placeholder="(34) 90000-0000"
-            value={this.props.phone}
+            value={
+              this.props.sceneKey === "employeeCreate" ? undefined : this.props.phone
+            }
             onChangeText={value =>
               this.props.employeeUpdate({ prop: "phone", value })
             }
@@ -37,7 +41,9 @@ class EmployeeForm extends Component {
         <CardSection>
           <Picker
             style={{ flex: 1 }}
-            selectedValue={this.props.shift}
+            selectedValue={
+              this.props.shift
+            }
             onValueChange={value =>
               this.props.employeeUpdate({ prop: "shift", value })
             }
