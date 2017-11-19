@@ -3,8 +3,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 // Make a component
-const Card = prop => {
-  return <View style={styles.container}>{prop.children}</View>;
+const Card = props => {
+  return <View style={styles.container}>{props.children}</View>;
 };
 
 // StyleSheet
