@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import { Text,
-        StyleSheet,
-        TouchableWithoutFeedback,
-        View,
-        LayoutAnimation } from 'react-native';
-import { connect } from 'react-redux';
-import { CardSection } from './common';
-import * as actions from '../actions';
+import React, { Component } from "react";
+import {
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
+  LayoutAnimation
+} from "react-native";
+import { connect } from "react-redux";
+import { CardSection } from "./common";
+import * as actions from "../actions";
 
 class ListItem extends Component {
-
   componentWillUpdate() {
     LayoutAnimation.spring();
   }
@@ -17,8 +18,8 @@ class ListItem extends Component {
   renderDescription() {
     const { library, expanded } = this.props;
 
-    if(expanded){
-      return(
+    if (expanded) {
+      return (
         <CardSection style={{ flex: 1 }}>
           <Text>{library.description}</Text>
         </CardSection>
@@ -26,17 +27,18 @@ class ListItem extends Component {
     }
   }
 
-  render(){
+  render() {
     const { titleStyle, viewStyle } = styles;
-    const {id, title } = this.props.library;
+    const { id, title } = this.props.library;
 
-    return(
-      <TouchableWithoutFeedback style={{ flex: 1 }} onPress={() => this.props.selectLibrary(id)}>
+    return (
+      <TouchableWithoutFeedback
+        style={{ flex: 1 }}
+        onPress={() => this.props.selectLibrary(id)}
+      >
         <View style={viewStyle}>
           <CardSection>
-            <Text style={titleStyle}>
-              {title}
-            </Text>
+            <Text style={titleStyle}>{title}</Text>
           </CardSection>
           {this.renderDescription()}
         </View>
@@ -47,16 +49,16 @@ class ListItem extends Component {
 
 // StyleSheet
 const styles = StyleSheet.create({
-	titleStyle: {
+  titleStyle: {
     flex: 1,
     fontSize: 18,
     paddingLeft: 15,
     margin: 10,
-    color: 'black'
+    color: "black"
   },
   viewStyle: {
     flex: 1,
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 3.5,
     borderRadius: 10
   }
@@ -64,7 +66,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, ownProps) => {
   const expanded = state.selectedLibraryId === ownProps.library.id;
-
   return { expanded };
 };
 
