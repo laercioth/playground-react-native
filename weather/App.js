@@ -4,11 +4,14 @@
  * @flow
  */
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Header } from "./src/components/common";
 import WeatherTop from "./src/components/WeatherTop";
 import WeatherMid from "./src/components/WeatherMid";
 import WeatherBottom from "./src/components/WeatherBottom";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+
+
 
 export default class App extends Component {
   render() {
