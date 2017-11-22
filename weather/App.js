@@ -9,16 +9,19 @@ import { Header } from "./src/components/common";
 import WeatherTop from "./src/components/WeatherTop";
 import WeatherMid from "./src/components/WeatherMid";
 import WeatherBottom from "./src/components/WeatherBottom";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-
-
+import GooglePlaceAutocomplete from "react-native-google-place-autocomplete";
 
 export default class App extends Component {
+  state = { result: ''}
   render() {
     return (
       <View style={{ flex: 1 }}>
         <Header headerText={"Weather"} />
-        <Text> Just a simple text!! </Text>
+        <GooglePlaceAutocomplete
+          googleAPIKey="AIzaSyDN3dEHSb6IWD9uuQBRlt43K6_A0FpLAeg"
+          onResult={result => console.log}
+          placeholder="Type to search..."
+        />
       </View>
     );
   }
