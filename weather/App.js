@@ -26,22 +26,30 @@ export default class App extends Component {
         <SearchBar lightTheme placeholder="Typing the City ..." />
 
         <Grid>
-          <Col>
-            <Row style={{ backgroundColor: "yellow" }}>
-              <Text>1</Text>
-            </Row>
-            <Row style={{ backgroundColor: "gray" }}>
-              <Text>2</Text>
-            </Row>
-          </Col>
-          <Col>
-            <Row style={{ backgroundColor: "blue" }}>
-              <Text>3</Text>
-            </Row>
-            <Row style={{ backgroundColor: "white" }}>
-              <Text>4</Text>
-            </Row>
-          </Col>
+          <Row>
+            <Grid>
+              <Col size={1} style={{ backgroundColor: "pink" }} />
+              <Col size={1} style={{ backgroundColor: "green" }} />
+            </Grid>
+          </Row>
+          <Row>
+            <Grid>
+              <Col size={1} style={{ backgroundColor: "blue" }} />
+              <Col size={1} style={{ backgroundColor: "yellow" }} />
+            </Grid>
+          </Row>
+          <Row>
+            <Grid>
+              <Col size={1} style={{ backgroundColor: "orange" }} />
+              <Col size={1} style={{ backgroundColor: "gray" }} />
+            </Grid>
+          </Row>
+          <Row>
+            <Grid>
+              <Col size={1} style={{ backgroundColor: "white" }} />
+              <Col size={1} style={{ backgroundColor: "red" }} />
+            </Grid>
+          </Row>
         </Grid>
       </View>
     );
