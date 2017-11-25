@@ -14,6 +14,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Feather from "react-native-vector-icons/Feather";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export default class App extends Component {
   render() {
@@ -127,18 +128,262 @@ export default class App extends Component {
                   </Row>
                 </Grid>
               </Col>
-              <Col size={1} style={{ backgroundColor: "gray" }} />
+              <Col size={1} style={{ padding: 15 }}>
+                <Grid>
+                  <Row>
+                    <Col size={1}>
+                      <FontAwesome
+                        name="arrow-up"
+                        size={35}
+                        color="#d1d2d3"
+                        style={{ marginLeft: 15 }}
+                      />
+                    </Col>
+                    <Col size={1}>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          textAlign: "center",
+                          marginTop: 8
+                        }}
+                      >
+                        400
+                        <MaterialCommunityIcons
+                          name="temperature-celsius"
+                          size={18}
+                          color="#000"
+                        />
+                      </Text>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col size={1} style={{ marginTop: 5 }}>
+                      <FontAwesome
+                        name="arrow-down"
+                        style={{ marginLeft: 15 }}
+                        size={35}
+                        color="#d1d2d3"
+                      />
+                    </Col>
+                    <Col size={1}>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          textAlign: "center",
+                          marginTop: 10
+                        }}
+                      >
+                        200
+                        <MaterialCommunityIcons
+                          name="temperature-celsius"
+                          size={18}
+                          color="#000"
+                        />
+                      </Text>
+                    </Col>
+                  </Row>
+                </Grid>
+              </Col>
             </Grid>
           </Row>
           <Row>
             <Grid>
-              <Col size={1} style={{ backgroundColor: "blue" }} />
+              <Col size={0.17}>
+                <Row style={{ flex: 1 }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                      fontWeight: "bold"
+                    }}
+                  >
+                    16
+                    <MaterialCommunityIcons
+                      name="temperature-celsius"
+                      size={15}
+                      color="#000"
+                    />
+                  </Text>
+                </Row>
+                <Row>
+                  <Image
+                    style={{
+                      width: 50,
+                      height: 50,
+                      margin: 5
+                    }}
+                    source={{
+                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
+                    }}
+                  />
+                </Row>
+              </Col>
+              <Col size={0.17}>
+                <Row style={{ flex: 1 }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                      fontWeight: "bold"
+                    }}
+                  >
+                    16
+                    <MaterialCommunityIcons
+                      name="temperature-celsius"
+                      size={15}
+                      color="#000"
+                    />
+                  </Text>
+                </Row>
+                <Row>
+                  <Image
+                    style={{
+                      width: 50,
+                      height: 50,
+                      margin: 5
+                    }}
+                    source={{
+                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
+                    }}
+                  />
+                </Row>
+              </Col>
+              <Col size={0.17}>
+                <Row style={{ flex: 1 }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                      fontWeight: "bold"
+                    }}
+                  >
+                    16
+                    <MaterialCommunityIcons
+                      name="temperature-celsius"
+                      size={15}
+                      color="#000"
+                    />
+                  </Text>
+                </Row>
+                <Row>
+                  <Image
+                    style={{
+                      width: 50,
+                      height: 50,
+                      margin: 5
+                    }}
+                    source={{
+                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
+                    }}
+                  />
+                </Row>
+              </Col>
+              <Col size={0.17}>
+                <Row style={{ flex: 1 }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                      fontWeight: "bold"
+                    }}
+                  >
+                    16
+                    <MaterialCommunityIcons
+                      name="temperature-celsius"
+                      size={15}
+                      color="#000"
+                    />
+                  </Text>
+                </Row>
+                <Row>
+                  <Image
+                    style={{
+                      width: 50,
+                      height: 50,
+                      margin: 5
+                    }}
+                    source={{
+                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
+                    }}
+                  />
+                </Row>
+              </Col>
+              <Col size={0.17}>
+                <Row style={{ flex: 1 }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                      fontWeight: "bold"
+                    }}
+                  >
+                    16
+                    <MaterialCommunityIcons
+                      name="temperature-celsius"
+                      size={15}
+                      color="#000"
+                    />
+                  </Text>
+                </Row>
+                <Row>
+                  <Image
+                    style={{
+                      width: 50,
+                      height: 50,
+                      margin: 5
+                    }}
+                    source={{
+                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
+                    }}
+                  />
+                </Row>
+              </Col>
+              <Col size={0.17}>
+                <Row style={{ flex: 1 }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                      fontWeight: "bold"
+                    }}
+                  >
+                    16
+                    <MaterialCommunityIcons
+                      name="temperature-celsius"
+                      size={15}
+                      color="#000"
+                    />
+                  </Text>
+                </Row>
+                <Row>
+                  <Image
+                    style={{
+                      width: 50,
+                      height: 50,
+                      margin: 5
+                    }}
+                    source={{
+                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
+                    }}
+                  />
+                </Row>
+              </Col>
             </Grid>
           </Row>
-          <Row>
+          <Row size={0.5}>
             <Grid>
-              <Col size={1} style={{ backgroundColor: "white" }} />
-              <Col size={1} style={{ backgroundColor: "red" }} />
+              <Col size={1}>
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: 20
+                  }}
+                >
+                  <Text style={{ fontSize: 20 }}>Uberlândia - MG - Brasil</Text>
+                  <Text style={{ fontSize: 20 }}>Local Time 18:30</Text>
+                </View>
+              </Col>
             </Grid>
           </Row>
         </Grid>
