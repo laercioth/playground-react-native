@@ -4,7 +4,7 @@
  * @flow
  */
 import React, { Component } from "react";
-import { View, Text, Image, ListView } from "react-native";
+import { View, Text, Image } from "react-native";
 import WeatherTop from "./src/components/WeatherTop";
 import WeatherMid from "./src/components/WeatherMid";
 import WeatherBottom from "./src/components/WeatherBottom";
@@ -13,15 +13,7 @@ import { Header, SearchBar } from "react-native-elements";
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 export default class App extends Component {
-
-  componentWillMount() {
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
-    });
-
-    this.dataSource = ds.cloneWithRows(this.props.libraries);
-  }
-
+  state = { result: "" };
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -40,15 +32,7 @@ export default class App extends Component {
           <Row>
             <Grid>
               <Col size={1}>
-                <Text
-                  style={{
-                    fontSize: 50,
-                    padding: 5,
-                    marginLeft: 20,
-                    marginTop: 10,
-                    fontWeight: "bold"
-                  }}
-                >
+                <Text style={{ fontSize: 50, padding: 5, marginLeft: 20, marginTop: 10, fontWeight: "bold" }}>
                   16˚C
                 </Text>
                 <Text
@@ -60,15 +44,8 @@ export default class App extends Component {
 
               <Col size={1}>
                 <Image
-                  style={{
-                    width: 120,
-                    height: 120,
-                    margin: 10,
-                    marginLeft: 50
-                  }}
-                  source={{
-                    uri: "https://cdn.apixu.com/weather/128x128/night/116.png"
-                  }}
+                  style={{ width: 120, height: 120, margin: 10, marginLeft: 50 }}
+                  source={{ uri: 'https://cdn.apixu.com/weather/128x128/night/116.png' }}
                 />
               </Col>
             </Grid>
@@ -76,10 +53,7 @@ export default class App extends Component {
           <Row>
             <Grid>
               <Col size={1} style={{ backgroundColor: "blue" }}>
-                <ListView
-                  horizontal={true}
-                  style={{ flex: 1 }} />}
-                />
+                
               </Col>
             </Grid>
           </Row>
