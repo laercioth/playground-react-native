@@ -15,8 +15,36 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Feather from "react-native-vector-icons/Feather";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import axios from "axios";
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { responseJson: null, city: "" };
+  }
+  search() {
+    return fetch(
+      "https://api.apixu.com/v1/forecast.json?key=5293b35003bf4336bf3230844171011&q=" +
+        this.state.city +
+        "&days=7"
+    )
+      .then(response => response.json())
+      .then(responseJson => {
+        console.log(this);
+        var teste = JSON.stringify(responseJson);
+        this.setState({ teste });
+        console.log(responseJson);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  _changeText(value) {
+    this.setState({ city: value });
+    this.props.onChangeText ? this.props.onChangeText(value) : null;
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -29,7 +57,17 @@ export default class App extends Component {
           outerContainerStyles={{ backgroundColor: "#3D6DCC" }}
           innerContainerStyles={{ justifyContent: "space-around" }}
         />
-        <SearchBar placeholder="Typing your city here ..." />
+        <SearchBar
+          autoFocus
+          round
+          clearIcon={{ color: "#86939e" }}
+          autoCapitalize="sentences"
+          autoCorrect={false}
+          keyboardType="default"
+          onChangeText={this._changeText.bind(this)}
+          placeholder="Typing your city here ..."
+          onSubmitEditing={() => this.search()}
+        />
 
         <Grid>
           <Row>
@@ -380,7 +418,8 @@ export default class App extends Component {
                     padding: 20
                   }}
                 >
-                  <Text style={{ fontSize: 20 }}>Uberlândia - MG - Brasil</Text>
+                  <Text style={{ fontSize: 20 }}>{this.state.responseJson === null ? 'OI' : this.state.responseJson}
+                  </Text>
                   <Text style={{ fontSize: 20 }}>Local Time 18:30</Text>
                 </View>
               </Col>
