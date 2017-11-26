@@ -30,10 +30,7 @@ export default class App extends Component {
     )
       .then(response => response.json())
       .then(responseJson => {
-        console.log(this);
-        var teste = JSON.stringify(responseJson);
-        this.setState({ teste });
-        console.log(responseJson);
+        this.setState({ responseJson: responseJson });
       })
       .catch(error => {
         console.error(error);
@@ -97,17 +94,21 @@ export default class App extends Component {
               </Col>
 
               <Col size={1}>
-                <Image
-                  style={{
-                    width: 120,
-                    height: 120,
-                    margin: 10,
-                    marginLeft: 50
-                  }}
-                  source={{
-                    uri: "https://cdn.apixu.com/weather/128x128/night/116.png"
-                  }}
-                />
+                {this.state.responseJson === null ? (
+                  <Text> -- </Text>
+                ) : (
+                  <Image
+                    style={{
+                      width: 120,
+                      height: 120,
+                      margin: 10,
+                      marginLeft: 50
+                    }}
+                    source={{
+                      uri: "http://"+this.state.responseJson.current.condition.icon
+                    }}
+                  />
+                )}
               </Col>
             </Grid>
           </Row>
@@ -418,9 +419,19 @@ export default class App extends Component {
                     padding: 20
                   }}
                 >
-                  <Text style={{ fontSize: 20 }}>{this.state.responseJson === null ? 'OI' : this.state.responseJson}
+                  <Text style={{ fontSize: 20 }}>
+                    {this.state.responseJson === null
+                      ? "--"
+                      : this.state.responseJson.location.name +
+                        " - " +
+                        this.state.responseJson.location.country}
                   </Text>
-                  <Text style={{ fontSize: 20 }}>Local Time 18:30</Text>
+                  <Text style={{ fontSize: 20 }}>
+                    Local Time:{" "}
+                    {this.state.responseJson === null
+                      ? "--"
+                      : this.state.responseJson.location.localtime}
+                  </Text>
                 </View>
               </Col>
             </Grid>
