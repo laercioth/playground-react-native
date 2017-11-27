@@ -8,14 +8,13 @@ import { View, Text, Image } from "react-native";
 import WeatherTop from "./src/components/WeatherTop";
 import WeatherMid from "./src/components/WeatherMid";
 import WeatherBottom from "./src/components/WeatherBottom";
-import GooglePlaceAutocomplete from "react-native-google-place-autocomplete";
 import { Header, SearchBar } from "react-native-elements";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Feather from "react-native-vector-icons/Feather";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import axios from "axios";
+import { TextInputMask } from "react-native-masked-text";
 
 export default class App extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ export default class App extends Component {
     )
       .then(response => response.json())
       .then(responseJson => {
-        this.setState({ responseJson: responseJson });
+        return this.setState({ responseJson: responseJson });
       })
       .catch(error => {
         console.error(error);
@@ -79,23 +78,42 @@ export default class App extends Component {
                     fontWeight: "bold"
                   }}
                 >
-                  16
+                  {this.state.responseJson === null ? (
+                    <Text> -- </Text>
+                  ) : (
+                    this.state.responseJson.current.temp_c
+                  )}
                   <MaterialCommunityIcons
                     name="temperature-celsius"
                     size={40}
                     color="#000"
                   />
                 </Text>
-                <Text
-                  style={{ fontSize: 30, paddingLeft: 20, fontWeight: "bold" }}
-                >
-                  Tuesneday
-                </Text>
+
+                {this.state.responseJson === null ? (
+                  <Text
+                    style={{
+                      fontSize: 30,
+                      paddingLeft: 30,
+                      fontWeight: "bold"
+                    }}
+                  >
+                    --
+                  </Text>
+                ) : (
+                  <TextInputMask
+                    ref={this.state.responseJson.location.localtime}
+                    type={"datetime"}
+                    options={{
+                      format: "DD-MM-YYYY HH:mm:ss"
+                    }}
+                  />
+                )}
               </Col>
 
               <Col size={1}>
                 {this.state.responseJson === null ? (
-                  <Text> -- </Text>
+                  <Text />
                 ) : (
                   <Image
                     style={{
@@ -105,7 +123,9 @@ export default class App extends Component {
                       marginLeft: 50
                     }}
                     source={{
-                      uri: "http://"+this.state.responseJson.current.condition.icon
+                      uri:
+                        "https:" +
+                        this.state.responseJson.current.condition.icon
                     }}
                   />
                 )}
@@ -116,7 +136,7 @@ export default class App extends Component {
           {/* GRID HUMIDITY */}
           <Row size={0.7}>
             <Grid>
-              <Col size={1} style={{ padding: 15 }}>
+              <Col size={1} style={{ padding: 10 }}>
                 <Grid>
                   <Row>
                     <Col size={1}>
@@ -135,7 +155,11 @@ export default class App extends Component {
                           marginTop: 8
                         }}
                       >
-                        400
+                        {this.state.responseJson === null ? (
+                          <Text> -- </Text>
+                        ) : (
+                          this.state.responseJson.current.humidity
+                        )}
                         <MaterialCommunityIcons
                           name="percent"
                           size={15}
@@ -161,7 +185,12 @@ export default class App extends Component {
                           marginTop: 10
                         }}
                       >
-                        200 km/h
+                        {this.state.responseJson === null ? (
+                          <Text> -- </Text>
+                        ) : (
+                          this.state.responseJson.current.wind_kph
+                        )}{" "}
+                        km/h
                       </Text>
                     </Col>
                   </Row>
@@ -186,7 +215,12 @@ export default class App extends Component {
                           marginTop: 8
                         }}
                       >
-                        400
+                        {this.state.responseJson === null ? (
+                          <Text> -- </Text>
+                        ) : (
+                          this.state.responseJson.forecast.forecastday[0].day
+                            .maxtemp_c
+                        )}
                         <MaterialCommunityIcons
                           name="temperature-celsius"
                           size={18}
@@ -212,7 +246,12 @@ export default class App extends Component {
                           marginTop: 10
                         }}
                       >
-                        200
+                        {this.state.responseJson === null ? (
+                          <Text> -- </Text>
+                        ) : (
+                          this.state.responseJson.forecast.forecastday[0].day
+                            .mintemp_c
+                        )}
                         <MaterialCommunityIcons
                           name="temperature-celsius"
                           size={18}
@@ -225,18 +264,25 @@ export default class App extends Component {
               </Col>
             </Grid>
           </Row>
-          <Row>
+
+          {/* GRIDS DAYS */}
+          <Row style={{ paddingTop: 15 }}>
             <Grid>
               <Col size={0.17}>
-                <Row style={{ flex: 1 }}>
+                <Row size={0.5}>
                   <Text
                     style={{
-                      fontSize: 20,
-                      padding: 10,
+                      fontSize: 19,
+                      paddingLeft: 5,
                       fontWeight: "bold"
                     }}
                   >
-                    16
+                    {this.state.responseJson === null ? (
+                      <Text> -- </Text>
+                    ) : (
+                      this.state.responseJson.forecast.forecastday[1].day
+                        .avgtemp_c
+                    )}
                     <MaterialCommunityIcons
                       name="temperature-celsius"
                       size={15}
@@ -245,28 +291,40 @@ export default class App extends Component {
                   </Text>
                 </Row>
                 <Row>
-                  <Image
-                    style={{
-                      width: 50,
-                      height: 50,
-                      margin: 5
-                    }}
-                    source={{
-                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
-                    }}
-                  />
+                  {this.state.responseJson === null ? (
+                    <Text />
+                  ) : (
+                    <Image
+                      style={{
+                        width: 40,
+                        height: 40,
+                        marginLeft: 5
+                      }}
+                      source={{
+                        uri:
+                          "https:" +
+                          this.state.responseJson.forecast.forecastday[1].day
+                            .condition.icon
+                      }}
+                    />
+                  )}
                 </Row>
               </Col>
               <Col size={0.17}>
-                <Row style={{ flex: 1 }}>
+                <Row size={0.5}>
                   <Text
                     style={{
-                      fontSize: 20,
-                      padding: 10,
+                      fontSize: 19,
+                      paddingLeft: 5,
                       fontWeight: "bold"
                     }}
                   >
-                    16
+                    {this.state.responseJson === null ? (
+                      <Text> -- </Text>
+                    ) : (
+                      this.state.responseJson.forecast.forecastday[2].day
+                        .avgtemp_c
+                    )}
                     <MaterialCommunityIcons
                       name="temperature-celsius"
                       size={15}
@@ -275,162 +333,220 @@ export default class App extends Component {
                   </Text>
                 </Row>
                 <Row>
-                  <Image
-                    style={{
-                      width: 50,
-                      height: 50,
-                      margin: 5
-                    }}
-                    source={{
-                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
-                    }}
-                  />
+                  {this.state.responseJson === null ? (
+                    <Text />
+                  ) : (
+                    <Image
+                      style={{
+                        width: 40,
+                        height: 40,
+                        marginLeft: 5
+                      }}
+                      source={{
+                        uri:
+                          "https:" +
+                          this.state.responseJson.forecast.forecastday[2].day
+                            .condition.icon
+                      }}
+                    />
+                  )}
                 </Row>
               </Col>
               <Col size={0.17}>
-                <Row style={{ flex: 1 }}>
+                <Row size={0.5}>
                   <Text
                     style={{
-                      fontSize: 20,
-                      padding: 10,
+                      fontSize: 19,
+                      paddingLeft: 5,
                       fontWeight: "bold"
                     }}
                   >
-                    16
+                    {this.state.responseJson === null ? (
+                      <Text> -- </Text>
+                    ) : (
+                      this.state.responseJson.forecast.forecastday[3].day
+                        .avgtemp_c
+                    )}
                     <MaterialCommunityIcons
                       name="temperature-celsius"
-                      size={15}
+                      size={16}
                       color="#000"
+                      style={{
+                        fontWeight: "bold"
+                      }}
                     />
                   </Text>
                 </Row>
                 <Row>
-                  <Image
-                    style={{
-                      width: 50,
-                      height: 50,
-                      margin: 5
-                    }}
-                    source={{
-                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
-                    }}
-                  />
+                  {this.state.responseJson === null ? (
+                    <Text />
+                  ) : (
+                    <Image
+                      style={{
+                        width: 40,
+                        height: 40,
+                        marginLeft: 5
+                      }}
+                      source={{
+                        uri:
+                          "https:" +
+                          this.state.responseJson.forecast.forecastday[3].day
+                            .condition.icon
+                      }}
+                    />
+                  )}
                 </Row>
               </Col>
               <Col size={0.17}>
-                <Row style={{ flex: 1 }}>
+                <Row size={0.5}>
                   <Text
                     style={{
-                      fontSize: 20,
-                      padding: 10,
+                      fontSize: 19,
+                      paddingLeft: 5,
                       fontWeight: "bold"
                     }}
                   >
-                    16
+                    {this.state.responseJson === null ? (
+                      <Text> -- </Text>
+                    ) : (
+                      this.state.responseJson.forecast.forecastday[4].day
+                        .avgtemp_c
+                    )}
                     <MaterialCommunityIcons
                       name="temperature-celsius"
-                      size={15}
+                      size={13}
                       color="#000"
                     />
                   </Text>
                 </Row>
                 <Row>
-                  <Image
-                    style={{
-                      width: 50,
-                      height: 50,
-                      margin: 5
-                    }}
-                    source={{
-                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
-                    }}
-                  />
+                  {this.state.responseJson === null ? (
+                    <Text />
+                  ) : (
+                    <Image
+                      style={{
+                        width: 40,
+                        height: 40,
+                        marginLeft: 5
+                      }}
+                      source={{
+                        uri:
+                          "https:" +
+                          this.state.responseJson.forecast.forecastday[4].day
+                            .condition.icon
+                      }}
+                    />
+                  )}
                 </Row>
               </Col>
               <Col size={0.17}>
-                <Row style={{ flex: 1 }}>
+                <Row size={0.5}>
                   <Text
                     style={{
-                      fontSize: 20,
-                      padding: 10,
+                      fontSize: 19,
+                      paddingLeft: 5,
                       fontWeight: "bold"
                     }}
                   >
-                    16
+                    {this.state.responseJson === null ? (
+                      <Text> -- </Text>
+                    ) : (
+                      this.state.responseJson.forecast.forecastday[6].day
+                        .avgtemp_c
+                    )}
                     <MaterialCommunityIcons
                       name="temperature-celsius"
-                      size={15}
+                      size={13}
                       color="#000"
                     />
                   </Text>
                 </Row>
                 <Row>
-                  <Image
-                    style={{
-                      width: 50,
-                      height: 50,
-                      margin: 5
-                    }}
-                    source={{
-                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
-                    }}
-                  />
+                  {this.state.responseJson === null ? (
+                    <Text />
+                  ) : (
+                    <Image
+                      style={{
+                        width: 40,
+                        height: 40,
+                        marginLeft: 5
+                      }}
+                      source={{
+                        uri:
+                          "https:" +
+                          this.state.responseJson.forecast.forecastday[5].day
+                            .condition.icon
+                      }}
+                    />
+                  )}
                 </Row>
               </Col>
               <Col size={0.17}>
-                <Row style={{ flex: 1 }}>
+                <Row size={0.5}>
                   <Text
                     style={{
-                      fontSize: 20,
-                      padding: 10,
+                      fontSize: 19,
+                      paddingLeft: 5,
                       fontWeight: "bold"
                     }}
                   >
-                    16
+                    {this.state.responseJson === null ? (
+                      <Text> -- </Text>
+                    ) : (
+                      this.state.responseJson.forecast.forecastday[6].day
+                        .avgtemp_c
+                    )}
                     <MaterialCommunityIcons
                       name="temperature-celsius"
-                      size={15}
+                      size={13}
                       color="#000"
                     />
                   </Text>
                 </Row>
                 <Row>
-                  <Image
-                    style={{
-                      width: 50,
-                      height: 50,
-                      margin: 5
-                    }}
-                    source={{
-                      uri: "https://cdn.apixu.com/weather/64x64/night/116.png"
-                    }}
-                  />
+                  {this.state.responseJson === null ? (
+                    <Text />
+                  ) : (
+                    <Image
+                      style={{
+                        width: 40,
+                        height: 40,
+                        marginLeft: 5,
+                        paddingBottom: 10
+                      }}
+                      source={{
+                        uri:
+                          "https:" +
+                          this.state.responseJson.forecast.forecastday[6].day
+                            .condition.icon
+                      }}
+                    />
+                  )}
                 </Row>
               </Col>
             </Grid>
           </Row>
-          <Row size={0.5}>
+          <Row size={0.7}>
             <Grid>
-              <Col size={1}>
+              <Col>
                 <View
                   style={{
                     justifyContent: "center",
-                    alignItems: "center",
-                    padding: 20
+                    alignItems: "center"
                   }}
                 >
-                  <Text style={{ fontSize: 20 }}>
+                  <Text
+                    style={{
+                      fontSize: 25,
+                      marginBottom: 10,
+                      fontWeight: "bold"
+                    }}
+                  >
                     {this.state.responseJson === null
                       ? "--"
                       : this.state.responseJson.location.name +
                         " - " +
                         this.state.responseJson.location.country}
-                  </Text>
-                  <Text style={{ fontSize: 20 }}>
-                    Local Time:{" "}
-                    {this.state.responseJson === null
-                      ? "--"
-                      : this.state.responseJson.location.localtime}
                   </Text>
                 </View>
               </Col>
