@@ -15,6 +15,7 @@ import Feather from "react-native-vector-icons/Feather";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { TextInputMask } from "react-native-masked-text";
+import Moment from "moment";
 
 export default class App extends Component {
   constructor(props) {
@@ -94,20 +95,26 @@ export default class App extends Component {
                   <Text
                     style={{
                       fontSize: 30,
-                      paddingLeft: 30,
+                      paddingLeft: 40,
+                      paddingTop: 15,
                       fontWeight: "bold"
                     }}
                   >
                     --
                   </Text>
                 ) : (
-                  <TextInputMask
-                    ref={this.state.responseJson.location.localtime}
-                    type={"datetime"}
-                    options={{
-                      format: "DD-MM-YYYY HH:mm:ss"
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      paddingLeft: 30,
+                      paddingTop: 15,
+                      fontWeight: "bold"
                     }}
-                  />
+                  >
+                    {Moment(this.state.responseJson.localtime).format(
+                      "DD/MM/YYYY"
+                    )}
+                  </Text>
                 )}
               </Col>
 
