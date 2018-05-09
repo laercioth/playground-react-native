@@ -1,6 +1,6 @@
 # Playground React Native
 
-[![Backers on Open Collective](https://opencollective.com/create-react-native-app/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/create-react-native-app/sponsors/badge.svg)](#sponsors) [![MIT](https://opensource.org/licenses/MIT)
+[![Backers on Open Collective](https://opencollective.com/create-react-native-app/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/create-react-native-app/sponsors/badge.svg)](#sponsors) [![MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
 **This repo was created by the purpose that to make apps labs. Its trends, make some apps tests, improvements in react-native knowledge.**<br/>
 
@@ -18,7 +18,7 @@ Clone this project and execute this command each root folders, for to install th
 $ npm install
 ```
 
-After that, for run each app execute in root folder:
+After that, for run each app execute in root folder of each app:
 
 For ios
 ```sh
@@ -29,3 +29,5 @@ For android
 ```sh
 $ react-native run-android
 ```
+
+**Thanks for your time**
