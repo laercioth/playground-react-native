@@ -12,7 +12,7 @@ React Native apps with no build configuration.
 
 ## Quick Overview
 
-Make sure you have Node v6 or later installed. Xcode or Android Studio installation and configuration is required if you want to run emulators.
+Make sure you have Node v6 or later installed. Xcode or Android Studio installation and configuration is required if you want to run these apps.
 
 Clone this project and execute this command each root folders, for to install their dependencies:
 
