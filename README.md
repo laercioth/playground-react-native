@@ -1,24 +1,31 @@
-# playground-react-native
-Just playground about react-native
-<p align="center">
-  <a href="https://www.npmjs.com/package/react-native-elements">
-    <img src="https://img.shields.io/npm/v/react-native-elements.svg?style=flat-square">
-  </a>
-  <a href="https://cdnjs.com/libraries/react-native-elements">
-    <img src="https://img.shields.io/cdnjs/v/react-native-elements.svg?style=flat-square">
-  </a>
-  <a href="https://travis-ci.org/react-native-training/react-native-elements">
-    <img src="https://img.shields.io/travis/react-native-training/react-native-elements/master.svg?style=flat-square">
-  </a>
-</p>
+# Playground React Native
 
-<p align="center">
-  <a href="#backers">
-    <img src="https://opencollective.com/react-native-elements/backers/badge.svg">
-  </a>
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-blue.svg">
-  </a>
-  <a href="https://oblador.github.io/react-native-vector-icons/"></a>
+[![Backers on Open Collective](https://opencollective.com/create-react-native-app/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/create-react-native-app/sponsors/badge.svg)](#sponsors) [![npm version](https://badge.fury.io/js/create-react-native-app.svg)](https://badge.fury.io/js/create-react-native-app)
 
-</p>
+**This repo was created by the purpose that to make apps labs. Its trends, make some apps tests, improvements in react-native knowledge.**<br/>
+
+React Native apps with no build configuration.
+
+* [Getting Started](https://facebook.github.io/react-native/docs/getting-started.html)
+
+## Quick Overview
+
+Make sure you have Node v6 or later installed. No Xcode or Android Studio installation is required and configured.
+
+Clone this project and execute this command each root folder project, for to install their dependencies:
+
+```sh
+$ npm install -g
+```
+
+After that, for run each app execute in root folder:
+
+For ios
+```sh
+$ react-native run-ios
+```
+
+For android
+```sh
+$ react-native run-android
+```
