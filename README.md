@@ -1,6 +1,8 @@
 # Playground React Native
 
-[![Backers on Open Collective](https://opencollective.com/create-react-native-app/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/create-react-native-app/sponsors/badge.svg)](#sponsors) [![MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+[![Backers on Open Collective](https://opencollective.com/create-react-native-app/backers/badge.svg)](#backers)
+[![Sponsors on Open Collective](https://opencollective.com/create-react-native-app/sponsors/badge.svg)](#sponsors)
+[![License MIT](https://opencollective.com/create-react-native-app/sponsors/badge.svg)](https://opensource.org/licenses/MIT)
 
 **This repo was created by the purpose that to make apps labs. Its trends, make some apps tests, improvements in react-native knowledge.**<br/>
 
