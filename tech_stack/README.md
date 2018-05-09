@@ -3,6 +3,8 @@
 
 This app just list stack of technologies list details.
 
+**Folder structure**<br/>
+
 ```
 App.js
 index.html
