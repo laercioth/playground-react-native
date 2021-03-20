@@ -1,7 +1,7 @@
 
 **This app was built for the test case by Bene Studio.**<br/>
 
-This app consume album list and make the redirection to website Amazon for buy album listed.
+This app consume an API album list and redirect to the Amazon website for more details.
 
 **Folder structure**<br/>
 
