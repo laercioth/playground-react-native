@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "moment": "^2.19.2",
+    "moment": "^2.29.4",
     "react": "16.0.0",
     "react-native": "0.50.3",
     "react-native-easy-grid": "^0.1.15",
